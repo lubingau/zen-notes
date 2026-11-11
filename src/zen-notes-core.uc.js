@@ -15,6 +15,8 @@
   const PREF_HEIGHT = "zen.notes.height";
   const PREF_PRESET = "zen.notes.preset";
   const PREF_DATA_BACKUP = "zen.notes.dataBackup";
+  const PREF_MODE = "zen.notes.mode";
+  const PREF_FLOATING_VISIBLE = "zen.notes.floatingVisible";
   /** Preferences from removed features; cleared once at startup. */
   const DEPRECATED_PREFS = [
     "zen.notes.showWorkspaceKey",
@@ -209,6 +211,8 @@
     PREF_HEIGHT,
     PREF_PRESET,
     PREF_DATA_BACKUP,
+    PREF_MODE,
+    PREF_FLOATING_VISIBLE,
     SCHEMA_VERSION,
     VERSION,
     DEFAULT_HEIGHT,

@@ -812,10 +812,100 @@
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    &,
-    & * {
-      transition: none !important;
+  /* ── Floating mode overrides ────────────────────────────── */
+  &[data-mode="floating"] {
+    position: fixed;
+    inset: auto 20px 76px auto;
+    z-index: 100000;
+    inline-size: 340px;
+    max-block-size: 460px;
+    box-shadow: 0 8px 32px rgb(0 0 0 / 30%);
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      max-height 0.2s ease,
+      border-color var(--zn-ease),
+      box-shadow var(--zn-ease);
+    margin: 0;
+
+    & .zen-notes-body {
+      flex: 1 1 auto;
     }
+    &[data-visible="true"] {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    &[data-visible="false"] {
+      max-block-size: calc(var(--zn-header) + 2px);
+
+      & .zen-notes-body {
+        max-block-size: 0;
+        padding: 0 var(--zn-space-3);
+        opacity: 0;
+        pointer-events: none;
+      }
+      & .zen-notes-drag-bar {
+        display: none;
+      }
+      & .zen-notes-toggle {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+/* ── Floating toggle button ─────────────────────────────────── */
+#zn-notes-floating-btn {
+  position: fixed;
+  inset: auto 20px 20px auto;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: 38px;
+  block-size: 38px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff3a3;
+  color: #4a3f00;
+  font:
+    600 16px / 1 system-ui,
+    -apple-system,
+    sans-serif;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+  cursor: pointer;
+  -moz-user-select: none;
+  user-select: none;
+  opacity: 0.85;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  &:focus-visible {
+    outline: 2px solid rgb(30 102 245 / 55%);
+    outline-offset: 2px;
+  }
+  &[data-active="true"] {
+    opacity: 0.5;
+    transform: scale(0.92);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #zen-notes-widget,
+  #zen-notes-widget *,
+  #zn-notes-floating-btn {
+    transition: none !important;
   }
 }

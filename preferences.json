@@ -11,6 +11,22 @@
     "margin": "0 0 18px 0"
   },
   {
+    "type": "dropdown",
+    "property": "zen.notes.mode",
+    "label": "Widget mode",
+    "defaultValue": "sidebar",
+    "options": [
+      {
+        "label": "Sidebar (default)",
+        "value": "sidebar"
+      },
+      {
+        "label": "Floating window",
+        "value": "floating"
+      }
+    ]
+  },
+  {
     "type": "separator",
     "label": "Sidebar"
   },
